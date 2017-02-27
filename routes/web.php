@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('test', function () {
+    return view('greeting', ['name'=>'1231']);
+});
+
+Route::controller('photos', 'PhotosController');
