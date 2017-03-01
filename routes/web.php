@@ -11,12 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'HomeController@index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+
+Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin'], function() {
+    Route::get('/', 'HomeController@index');
+    Route::resource('article', 'ArticleController');
+    Route::resource('comment', 'CommentController');
 });
 
-Route::get('test', function () {
-    return view('greeting', ['name'=>'1231']);
-});
-
-Route::controller('photos', 'PhotosController');
+Route::get('article/{id}', 'ArticleController@show');
+Route::post('comment', 'CommentController@store');
