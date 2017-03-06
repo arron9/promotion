@@ -1,0 +1,15 @@
+{
+  "name": "promotion",
+  "dependencies": {
+    "AdminLTE": "admin-lte#^2.3.3",
+    "vue": "^1.0.24",
+    "bootstrap-wysihtml5": "*",
+    "vue-resource": "^0.8.0",
+    "vue-datetime-picker": "^0.2.1",
+    "bootstrap": "^3.3.6",
+    "eonasdan-bootstrap-datetimepicker": "^4.17.37"
+  },
+  "devDependencies": {
+    "vue-validator": "vuejs/vue-validator#^2.1.6"
+  }
+}
