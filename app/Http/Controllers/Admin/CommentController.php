@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\ControllerBase;
 
 use App\Comment;
 
-class CommentController extends Controller
+class CommentController extends ControllerBase 
 {
     public function index() {
         $comments = Comment::all();

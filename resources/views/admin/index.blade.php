@@ -27,11 +27,7 @@
                                         <th>ID</th>
                                         <th>标题</th>
                                         <th>更新时间</th>
-
-                                        <template v-for="element in items[0].elements">
-                                            <th v-if="element.name == 'matchDate'">赛程</th>
-                                            <th v-if="element.label">{[element.text]}</th>
-                                        </template>
+                                            <th>赛程</th>
                                         <th>操作</th>
                                     </tr>
                                 </thead>
