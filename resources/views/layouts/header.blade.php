@@ -22,7 +22,7 @@
   <!-- Morris chart -->
   <link rel="stylesheet" href="libs/AdminLTE/plugins/morris/morris.css">
   <!-- jvectormap -->
-  <link rel="stylesheet" href="libs/AdminLTE/libs/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+  <link rel="stylesheet" href="libs/AdminLTE/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
   <!-- Date Picker -->
   <link rel="stylesheet" href="libs/AdminLTE/plugins/datepicker/datepicker3.css">
   <!-- Daterange picker -->
@@ -56,7 +56,7 @@
 <?php $categories = json_decode(session('top_categories')) ?> 
 @foreach ($categories as $category)
                 <li class="dropdown">
-                    <a href="/category" class="dropdown-toggle" aria-expanded="false">
+                    <a href="/{{ $category->module }}" class="dropdown-toggle" aria-expanded="false">
                         <i class="{{ $loop->iteration == 1?'fa fa-bars':'fa fa-file' }}"></i>
 {{ $category->title }}
                     </a>

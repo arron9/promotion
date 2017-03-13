@@ -206,7 +206,7 @@
 <!-- jQuery 2.2.3 -->
 <script src="libs/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
-<script src="libs/AdminLTE/https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button);
@@ -214,8 +214,8 @@
 <!-- Bootstrap 3.3.6 -->
 <script src="libs/AdminLTE/bootstrap/js/bootstrap.min.js"></script>
 <!-- Morris.js charts -->
-<script src="libs/AdminLTE/https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="libs/AdminLTE/plugins/morris/morris.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<!-- <script src="libs/AdminLTE/plugins/morris/morris.min.js"></script> -->
 <!-- Sparkline -->
 <script src="libs/AdminLTE/plugins/sparkline/jquery.sparkline.min.js"></script>
 <!-- jvectormap -->
@@ -224,7 +224,7 @@
 <!-- jQuery Knob Chart -->
 <script src="libs/AdminLTE/plugins/knob/jquery.knob.js"></script>
 <!-- daterangepicker -->
-<script src="libs/AdminLTE/https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
 <script src="libs/AdminLTE/plugins/daterangepicker/daterangepicker.js"></script>
 <!-- datepicker -->
 <script src="libs/AdminLTE/plugins/datepicker/bootstrap-datepicker.js"></script>
@@ -237,8 +237,43 @@
 <!-- AdminLTE App -->
 <script src="libs/AdminLTE/dist/js/app.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="libs/AdminLTE/dist/js/pages/dashboard.js"></script>
+<!-- <script src="libs/AdminLTE/dist/js/pages/dashboard.js"></script> -->
 <!-- AdminLTE for demo purposes -->
 <script src="libs/AdminLTE/dist/js/demo.js"></script>
+<script>
+$(function() {
+
+    // 递归列表函数js
+    function recursion(selector,data)
+    {
+        if(!data) return false;
+
+        for(var i=0;i<data.length;i++)
+        {
+
+            if(data[i]['children'] && data[i]['children'].length>0)
+            {
+                var ul=$('<ul class="treeview-menu"></ul>');
+                recursion(ul,data[i]['children']);
+            var li=$('<li><a href="#"><i class="fa fa-circle-o"></i><span>'+data[i]['title']+'</span><span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span></a></li>');
+                li.append(ul);
+            } else {
+            var li=$('<li><a href="/'+data[i]['title']+'"><i class="fa fa-circle-o"></i><span>'+data[i]['title']+'</span></a></li>');
+
+                li.append(ul);
+            }
+
+            selector.append(li);
+        }
+
+
+    }
+
+    var items = <?php echo session('side_categories') ?>;
+
+    recursion($('#sidebar-menu'), items);
+});
+
+ </script>
 </body>
 </html>
